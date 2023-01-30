@@ -22,7 +22,38 @@ window.addEventListener('load',() => {
             console.log(this.keys)
         }
     }
-    
+
     const keyPress = new Keys();
+
+
+    class Player{
+        constructor(gameWidth, gameHeight){
+            this.width = 45
+            this.height = 50
+            this.x = 5
+            this.y = 322
+            this.gameWidth = gameWidth
+            this.gameHeight = gameHeight
+        }
+        // draw(ctx){
+        //     ctx.fillstyle = 'white';
+        //     ctx.fillRect(this.x, this.y,this.width, this.height)
+        // }
+    }
+
+    const player1 = new Player(canvas.width, canvas.height)
+    const char = new Image();
+    char.src = 'css/images/idle outline.gif'
+    char.style.zIndex = 100
+    char.onload = () => {
+        ctx.drawImage(char, 5, 322, 45,50)
+    }
+
+    let floor = new Image();
+    floor.src = 'css/images/floor.png'
+    floor.onload = () => {
+    ctx.drawImage(floor, -5, 362, 300, 50)
+    // ctx.drawImage(floor, 80, 10, 100, 30, 0, 250, 100, 50)
+}
 
 }) 
