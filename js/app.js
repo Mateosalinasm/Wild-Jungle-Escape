@@ -1,8 +1,52 @@
 window.addEventListener('load',() => {
-    const canvas = document.querySelector('canvas');
+    const canvas = document.querySelector('#background');
     const ctx = canvas.getContext('2d');
-    canvas.height = 400;
-    canvas.width = 720;
+  
+    const foreground = document.getElementById('foreground');
+    const fgCtx = foreground.getContext('2d')
+    fgCtx.setTransform(1, 0, 0, 1, 0, 0)
+
+    // let guyJumping = new Image();
+    // guyJumping.src = 'css/images/mid air outline.gif'
+    // guyJumping.onload = (e) => {
+    //     fgCtx.drawImage(guyJumping, 10, 100, 30, 20)
+    // }
+
+    // const player1 = new Player(canvas.width, canvas.height)
+    let char = new Image();
+    char.src = 'css/images/idle outline.gif'
+    char.onload = (e) => {
+        fgCtx.drawImage(char, 5, 321, 40,50)
+    }
+
+    let floor = new Image();
+    floor.src = 'css/images/floor.png'
+    floor.onload = () => {
+    fgCtx.drawImage(floor, -5, 360, 300, 50) 
+    }
+
+    // let charX = 5
+    // let charY = 321
+
+    // document.onkeydown = function(event){
+    //     switch(event.keyCode){
+    //         case 37: // left arrow
+    //             console.log('left')
+    //             charX -= 10;
+    //             break;
+    //         case 38: // up arrow
+    //         console.log('right')
+    //             charY -= 10;
+    //             break;
+    //         case 39: // right arrow
+    //         console.log('up')
+    //             charX +=10;
+    //             break;
+    //         //case 40: // down arrow
+
+
+    //     }
+    // }
 
     class Keys{
         constructor(){
@@ -41,20 +85,7 @@ window.addEventListener('load',() => {
         // }
     }
 
-    const player1 = new Player(canvas.width, canvas.height)
-    const char = new Image();
-    char.src = 'css/images/idle outline.gif'
-    char.style.zIndex = 100
-    char.onload = () => {
-        ctx.drawImage(char, 5, 322, 45,50)
-    }
-
-    let floor = new Image();
-    floor.src = 'css/images/floor.png'
-    floor.onload = () => {
-        ctx.drawImage(floor, -5, 362, 300, 50) 
-    }
-
+    
     /* 
     While teaching myself how to use canvas I learned how to animate circles and thought it would be a really fun
     add-on if I could create fireflies of random sizes that just float around and bounce off the walls.
@@ -101,8 +132,8 @@ window.addEventListener('load',() => {
         let radius = Math.random() * 1.1;
         let x = Math.random() * canvas.width;
         let y = Math.random() * canvas.height;
-        let dx = (Math.random() - 0.5) / 1;
-        let dy = (Math.random() - 0.5) / 1;
+        let dx = (Math.random() - 0.5) / 2;
+        let dy = (Math.random() - 0.5) / 2;
         
         fireFliesArr.push(new FireFly(x, y, dx, dy, radius))
     

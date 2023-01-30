@@ -16,8 +16,6 @@ body{
     -o-background-size: cover;
     background-size: cover;
     text-align: center;
-    
-    
 }
 
 .title{
@@ -32,8 +30,8 @@ body{
 
 #background{
     position: relative;
-    height: 350px; /*350 px */
-    width: 750px; /*750 px */
+    height: 350px; 
+    width: 750px; 
     border: 5px solid rgb(85, 120, 117);
     border-radius: 20px;
     background: url('images/plx-5.png'), 
@@ -48,8 +46,16 @@ body{
     
 }
 
+#foreground{
+    position: relative;
+    bottom: 363px;
+    height: 350px; 
+    width: 750px; 
+    border: 5px solid rgb(85, 120, 117);
+    border-radius: 20px;
+    filter: contrast(140%);
 
-
+}
 
 
 
