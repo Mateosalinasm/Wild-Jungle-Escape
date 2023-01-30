@@ -1,0 +1,86 @@
+
+html, body {
+    margin: 0; height: 100%; overflow: hidden;
+   
+}
+
+body{
+    background: black;
+    display: block;
+    background: url('images/plx-5.png'), 
+    url('images/plx-4.png') , url('images/plx-3.png'), 
+    url('images/plx-2.png'),
+    url('images/plx-1.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    
+    
+}
+
+.title{
+    position: relative;
+    top: 20px;
+    height: 80px;
+    width: 500px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+
+#background{
+    position: relative;
+    height: 350px; /*350 px */
+    width: 750px; /*750 px */
+    border: 5px solid rgb(85, 120, 117);
+    border-radius: 20px;
+    background: url('images/plx-5.png'), 
+    url('images/plx-4.png') , url('images/plx-3.png'), 
+    url('images/plx-2.png'),
+    url('images/plx-1.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    filter: contrast(140%);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* .set{
+    position: relative;
+    margin-top: 50px;
+    height: 410px;
+    width: 1000px;
+    border: 5px solid rgb(85, 120, 117);
+    border-radius: 20px;
+    margin: 30px 20px 30px 20px;
+    background: url('images/plx-5.png'), 
+    url('images/plx-4.png') , url('images/plx-3.png'), 
+    url('images/plx-2.png'),
+    url('images/plx-1.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    filter: contrast(140%);
+} */
+
+/* .player{
+    position: relative;
+    top: 340px;
+    left:10px;
+    height: 60px;
+} */
