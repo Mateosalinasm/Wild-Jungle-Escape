@@ -18,9 +18,42 @@ body{
     text-align: center;
 }
 
+.rules{
+    position: relative;
+    top: 460px;
+    left: 780px;
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.rules-icon{
+    position: relative;
+    padding-top: 3px;
+    height: 25px;
+    color: white;
+}
+
+.rules-scroll{
+    position: relative;
+    right: 0px;
+    z-index: 100;
+    left: 155px;
+    top: 50px;
+    width: 0px;
+    height: 0px;
+}
+
+.scroll{
+    height: 380px;
+    width: 500px;
+    visibility: visible;
+}
+
 .title{
     position: relative;
-    top: 20px;
+    top: -20px;
     height: 80px;
     width: 500px;
     margin-top: -10px;
@@ -43,6 +76,7 @@ body{
     -o-background-size: cover;
     background-size: cover;
     filter: contrast(140%);
+    margin-top: -30px;
     
 }
 

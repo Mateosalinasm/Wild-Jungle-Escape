@@ -16,7 +16,7 @@ window.addEventListener('load',() => {
     let char = new Image();
     char.src = 'css/images/idle outline.gif'
     char.onload = (e) => {
-        fgCtx.drawImage(char, 5, 321, 40,50)
+        fgCtx.drawImage(char, 5, 316, 40,55)
     }
 
     let floor = new Image();
@@ -72,10 +72,10 @@ window.addEventListener('load',() => {
 
     class Player{
         constructor(gameWidth, gameHeight){
-            this.width = 45
-            this.height = 50
             this.x = 5
             this.y = 322
+            this.width = 45
+            this.height = 50
             this.gameWidth = gameWidth
             this.gameHeight = gameHeight
         }
@@ -152,6 +152,32 @@ window.addEventListener('load',() => {
     }
     animate()
     
+    //Event Listener for Rules
+    // const rules = document.querySelector('.rules')
+    // rules.addEventListener('click', () => {
+    //     const scroll = document.querySelector('.scroll')
+    //     // scroll = !scroll
+    //     if(scroll ){
+           
+    //         scroll.classList.add('animate__fadeInBottomRight')
+    //     } else {
+    //         scroll.classList.add('animate__fadeOutBottomRight')
+    //     }
+    // })
+
+    const rules = document.querySelector('.rules');
+    const scroll = document.querySelector('.scroll');
+    
+    rules.addEventListener('click', () => {
+   
+        if (scroll.classList.contains('animate__fadeInBottomRight')) {
+            scroll.classList.remove('animate__fadeInBottomRight');
+            scroll.classList.add('animate__fadeOutBottomRight');
+        } else {
+            scroll.classList.remove('animate__fadeOutBottomRight');
+            scroll.classList.add('animate__fadeInBottomRight');
+        }
+    });
 })
 
 //References:
