@@ -4,7 +4,7 @@ window.addEventListener('load',() => {
   
     const foreground = document.getElementById('foreground');
     const fgCtx = foreground.getContext('2d')
-    fgCtx.setTransform(1, 0, 0, 1, 0, 0)
+    
 
     // let guyJumping = new Image();
     // guyJumping.src = 'css/images/mid air outline.gif'
@@ -13,21 +13,22 @@ window.addEventListener('load',() => {
     // }
 
     // const player1 = new Player(canvas.width, canvas.height)
-    let char = new Image();
-    char.src = 'css/images/idle outline.gif'
-    char.onload = (e) => {
-        fgCtx.drawImage(char, 5, 316, 40,55)
-    }
+    // let char = new Image();
+    // char.src = 'css/images/idle outline.gif'
+    // char.onload = (e) => {
+    //     fgCtx.drawImage(char, 5, 316, 40,55)
+    // }
 
-    let floor = new Image();
-    floor.src = 'css/images/floor.png'
-    floor.onload = () => {
-    fgCtx.drawImage(floor, -5, 360, 300, 50) 
-    }
+    // let floor = new Image();
+    // floor.src = 'css/images/floor.png'
+    // floor.onload = () => {
+    // fgCtx.drawImage(floor, -5, 360, 300, 50) 
+    // }
 
     // let charX = 5
     // let charY = 321
 
+    //This way doesn't move the character, need to find another way
     // document.onkeydown = function(event){
     //     switch(event.keyCode){
     //         case 37: // left arrow
@@ -54,38 +55,56 @@ window.addEventListener('load',() => {
             window.addEventListener('keydown', event =>{
                 if((event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'ArrowRight' ||
                 event.key === 'ArrowLeft') && this.keys.indexOf(event.key) === -1){ 
-                    this.keys.push(event.key)
-                } //Used indexOf(event.key) to check if the key was in the array, if not then to push the key into the array
+                    this.keys.push(event.key) //Use .push to add the key to the array
+                } //Use indexOf(event.key) to check if the key was in the array, if not then to push the key into the array
                 console.log(event.key, this.keys)
             });
             window.addEventListener('keyup', event => {
-                if((event.key === 'ArrowDown' || 'ArrowUp' || 'ArrowRight' || 'ArrowLeft')){
-                    this.keys.splice(this.keys.indexOf(event.key), 1);
+                if((event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'ArrowRight' || event.key === 'ArrowLeft')){
+                    this.keys.splice(this.keys.indexOf(event.key), 1); //Use .splice to remove the key from the array once the key is let go
                 }
             })
             console.log(this.keys)
         }
     }
 
-    const keyPress = new Keys();
+    
 
 
     class Player{
         constructor(gameWidth, gameHeight){
-            this.x = 5
+            this.x = 60
             this.y = 322
             this.width = 45
             this.height = 50
             this.gameWidth = gameWidth
             this.gameHeight = gameHeight
+            this.image = document.getElementById('player')
+            this.speed = 0
+            this.yJump
+
+            this.draw = (contex) => {
+                contex.drawImage(this.image,this.x, this.y, this.width, this.height)
+            }
+            //This will move the player on the x axis
+            this.update = (keyPress) => {
+                this.x += this.speed
+                if(keyPress.keys.indexOf('ArrowRight') > -1){
+                    this.speed = 2
+                } else if(keyPress.keys.indexOf('ArrowLeft') > -1) {
+                    this.speed = -2
+                } else {
+                    this.speed = 0
+                }
+            }
         }
-        // draw(ctx){
-        //     ctx.fillstyle = 'white';
-        //     ctx.fillRect(this.x, this.y,this.width, this.height)
-        // }
+
     }
 
-    
+    const keyPress = new Keys();
+
+    const indianaJones = new Player()
+    indianaJones.draw(fgCtx)
     /* 
     While teaching myself how to use canvas I learned how to animate circles and thought it would be a really fun
     add-on if I could create fireflies of random sizes that just float around and bounce off the walls.
@@ -98,8 +117,8 @@ window.addEventListener('load',() => {
             this.dy = dy;
             this.radius = radius;
             
-
-            this.draw = function(){
+        
+            this.draw = () => {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, Math.PI * 2, false);
                 ctx.strokeStyle = 'yellow'
@@ -108,7 +127,7 @@ window.addEventListener('load',() => {
                 ctx.fill();
             }
 
-            this.update = function(){
+            this.update = () => {
                 if(this.x + this.radius > canvas.width + 10 || this.x - this.radius < -10){
                     this.dx = -this.dx
                 }
@@ -139,10 +158,18 @@ window.addEventListener('load',() => {
     
     }
 
-    console.log(fireFliesArr)
 
-    function animate(){
-        requestAnimationFrame(animate)
+    function animatePlayer(){
+        fgCtx.clearRect(0, 0, 720, 400)
+        indianaJones.draw(fgCtx)
+        indianaJones.update(keyPress)
+        requestAnimationFrame(animatePlayer)
+    }
+
+    animatePlayer()
+
+    function animateFireFlies(){
+        requestAnimationFrame(animateFireFlies)
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         for(let i = 0; i < fireFliesArr.length; i++){
@@ -150,34 +177,31 @@ window.addEventListener('load',() => {
         }
     
     }
-    animate()
-    
-    //Event Listener for Rules
-    // const rules = document.querySelector('.rules')
-    // rules.addEventListener('click', () => {
-    //     const scroll = document.querySelector('.scroll')
-    //     // scroll = !scroll
-    //     if(scroll ){
-           
-    //         scroll.classList.add('animate__fadeInBottomRight')
-    //     } else {
-    //         scroll.classList.add('animate__fadeOutBottomRight')
-    //     }
-    // })
+    animateFireFlies()
 
+
+    //This will dsplay the rules when the rules icon is clicked
     const rules = document.querySelector('.rules');
     const scroll = document.querySelector('.scroll');
     
+     
     rules.addEventListener('click', () => {
-   
-        if (scroll.classList.contains('animate__fadeInBottomRight')) {
-            scroll.classList.remove('animate__fadeInBottomRight');
-            scroll.classList.add('animate__fadeOutBottomRight');
-        } else {
-            scroll.classList.remove('animate__fadeOutBottomRight');
-            scroll.classList.add('animate__fadeInBottomRight');
-        }
+        
+      if (scroll.style.display === 'block') {
+        
+        scroll.style.display = 'none';
+        scroll.classList.remove('animate__fadeInBottomRight');
+        scroll.classList.add('animate__fadeOutBottomRight');
+      } 
+      //I can't get the second animation to fade out.
+      else{
+        scroll.style.display = 'block';
+        scroll.classList.remove('animate__fadeOutBottomRight');
+        scroll.classList.add('animate__fadeInBottomRight');
+      }
     });
+    
+ 
 })
 
 //References:
