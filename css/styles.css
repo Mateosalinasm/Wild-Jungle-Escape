@@ -5,8 +5,6 @@ html, body {
 }
 
 body{
-    background: black;
-    display: block;
     background: url('images/plx-5.png'), 
     url('images/plx-4.png') , url('images/plx-3.png'), 
     url('images/plx-2.png'),
@@ -16,56 +14,27 @@ body{
     -o-background-size: cover;
     background-size: cover;
     text-align: center;
+    /* background: black; */
 }
 
-.rules{
+.set{
     position: relative;
-    top: 435px;
-    left: 790px;
-    border: 2px solid rgb(85, 120, 117);
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-}
-
-.rules-icon{
-    position: relative;
-    padding-top: 3px;
-    height: 20px;
+    height: 600px; 
+    width: 1200px; 
+    bottom: 614px;
+    left: 115px;
+    border: 5px solid rgb(85, 120, 117);
+    border-radius: 20px;
+    overflow: hidden;
     
-}
 
-.rules-scroll{
-    position: relative;
-    right: 0px;
-    z-index: 100;
-    left: 220px;
-    top: 30px;
-    width: 700px;
-    height: 0px;
 }
-
-.scroll{
-    height: 380px;
-    width: 400px;
-    display: none;
-    position: relative;
-}
-
-.title{
-    position: relative;
-    top: -20px;
-    height: 80px;
-    width: 500px;
-    margin-top: -15px;
-    margin-bottom: 3px;
-}
-
 
 #background{
     position: relative;
-    height: 350px; 
-    width: 750px; 
+    top: 0px;
+    height: 600px; 
+    width: 1200px; 
     border: 5px solid rgb(85, 120, 117);
     border-radius: 20px;
     background: url('images/plx-5.png'), 
@@ -78,50 +47,161 @@ body{
     background-size: cover;
     filter: contrast(140%);
     margin-top: -30px;
+    overflow: hidden;
+  
+
+    animation: animateBack 5s steps(100) infinite;
     
 }
 
-#foreground{
+.ground{
     position: relative;
-    bottom: 363px;
-    height: 350px; 
-    width: 750px; 
-    border: 5px solid rgb(85, 120, 117);
-    border-radius: 20px;
-    filter: contrast(140%);
+    width: 1200px;
+    height: 80px;
+    /* border: 2px solid black; */
+    bottom: 92px;
+    left: 115px;
+  
+}
 
+.player{
+    /* position: relative; */
+    /* top: 540px; */
+    height: 85px;
+    
+    /* right: 680px; */
+}
+
+.enemy{
+    width: 20px;
+}
+
+.jump{
+    animation: jump 0.4s linear;
+}
+
+@keyframes animateBack
+{
+    from
+    {background-position: 0;}
+    to {background-position: -1200px};
+}
+
+@keyframes jump {
+    0%{
+        top: 605px;
+        
+    }
+
+    30%{
+        top: 560px;
+    }
+
+    50%{
+        top: 540px;
+        
+    }
+
+    80%{
+        top: 560px;
+    }
+
+    100%{
+        top:605px;
+    }
 }
 
 
+.floor{
+    position: absolute;
+    top: 610px;
+    right: 703px;
+    width: 615px;
+    height: 100px;
+    visibility: hidden;
+    animation: animateBack 3s steps(100) infinite;
+}
 
+.floor1{
+    position: absolute;
+    top: 610px;
+    width: 618px;
+    height: 100px;
+    right: 102px;
+    visibility: hidden;
+    animation: animateBack 3s steps(100) infinite;
+}
 
-
-
-
-
-
-/* .set{
+.title{
+    margin-bottom: 25px;
     position: relative;
-    margin-top: 50px;
-    height: 410px;
-    width: 1000px;
-    border: 5px solid rgb(85, 120, 117);
-    border-radius: 20px;
-    margin: 30px 20px 30px 20px;
-    background: url('images/plx-5.png'), 
-    url('images/plx-4.png') , url('images/plx-3.png'), 
-    url('images/plx-2.png'),
-    url('images/plx-1.png') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    filter: contrast(140%);
-} */
+    left: 70px;
+    z-index: 1;
+    /* visibility: hidden; */
 
-/* .player{
+}
+
+.hang{
     position: relative;
-    top: 340px;
-    left:10px;
-    height: 60px;
-} */
+    height: 70px;
+    z-index: 100;
+    right: 1078px;
+    top: 35px;
+}
+
+.air{
+    position: relative;
+    height: 44px;
+    z-index: 100;
+    right: 570px;
+    bottom: 113px;
+    visibility: hidden;
+}
+
+.idle{
+    position: relative;
+    height: 70px;
+    z-index: 100;
+    right: -45px;
+    bottom: 23px;
+}
+
+.rules{
+    position: relative;
+    top: -615px;
+    left: 1380px;
+    border: 2px solid rgb(85, 120, 117);
+    border-radius: 50%;
+    width: 47px;
+    height: 45px;
+    z-index: 100;
+    /* visibility: hidden; */
+
+}
+
+.rules-icon{
+    position: relative;
+    padding-top: 3px;
+    height: 40px;
+    
+}
+
+.rules-scroll{
+    position: relative;
+    right: 0px;
+    z-index: 100;
+    left: 450px;
+    top: -1295px;
+    width: 0px;
+    height: 0px;
+    
+}
+
+.scroll{
+    height: 650px;
+    width: 550px;
+    display: none;
+    position: relative;
+    /* visibility: hidden; */
+
+}
