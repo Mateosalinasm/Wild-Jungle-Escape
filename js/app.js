@@ -2,28 +2,44 @@ window.addEventListener('load',() => {
 
     const canvas = document.querySelector('#background');
     const ctx = canvas.getContext('2d');
+    let gameOver = false
 
+    let enemy = document.querySelector('.enemy')
     let player = document.querySelector('.player')
     player.style.position = "absolute";
-    player.style.left = "-100px";
-    player.style.top = "605px";
+    player.style.left = "-60px";
+    player.style.top = "557px";
+
+    //Collision Detection
+    let collision = setInterval(function () {
+        
+        let playerTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'))
+    
+
+        let enemyLeft = parseInt(window.getComputedStyle(enemy).getPropertyValue('left'))
+        // console.log(playerTop)
+
+        if(enemyLeft < 5 && enemyLeft > 0 && playerTop >= 557){
+            gameOver()
+        }
+    })
 
     let arrowKeysPressed = false;
 
-    function leftArrowPressed() {
+    // function leftArrowPressed() {
       
-        player.style.left = parseInt(player.style.left) - 15 + 'px';
-        arrowKeysPressed = true;
-    }
+    //     player.style.left = parseInt(player.style.left) - 15 + 'px';
+    //     arrowKeysPressed = true;
+    // }
 
-    function rightArrowPressed() {
+    // function rightArrowPressed() {
      
-        player.style.left = parseInt(player.style.left) + 15 + 'px';
-        arrowKeysPressed = true;
-    }
+    //     player.style.left = parseInt(player.style.left) + 15 + 'px';
+    //     arrowKeysPressed = true;
+    // }
 
 
-    function upArrowPressed() {
+    function space() {
        
         player.classList.add('jump')
         setTimeout(() => {
@@ -65,14 +81,14 @@ window.addEventListener('load',() => {
 
     function moveSelection(e) {
         switch (e.keyCode) {
-            case 37:
-            leftArrowPressed();
-            break;
-            case 39:
-            rightArrowPressed();
-            break;
-            case 38:
-            upArrowPressed();
+            // case 37:
+            // leftArrowPressed();
+            // break;
+            // case 39:
+            // rightArrowPressed();
+            // break;
+            case 32:
+            space();
             break;
             // case 40:
             // downArrowPressed();
@@ -80,11 +96,15 @@ window.addEventListener('load',() => {
         }
     
     };
-    document.addEventListener('keydown',function(){
-        jump();
-    })
+    // document.addEventListener('keydown',function(){
+    //     jump();
+    // })
     window.addEventListener('keydown', moveSelection);
     // window.addEventListener('keyup', idle);
+    
+    function gameOver() {
+        
+    }
 
     /* 
     While teaching myself how to use canvas I learned how to animate circles and thought it would be a really fun
@@ -188,6 +208,9 @@ https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_usage
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes.
 https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect.
 https://fjolt.com/article/html-canvas-adding-images.
+
+Jungle Pack:
+https://jesse-m.itch.io/jungle-pack
 */
 
 

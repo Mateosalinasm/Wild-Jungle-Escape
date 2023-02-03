@@ -19,13 +19,14 @@ body{
 
 .set{
     position: relative;
-    height: 600px; 
+    height: 550px; 
     width: 1200px; 
     bottom: 614px;
     left: 115px;
     border: 5px solid rgb(85, 120, 117);
     border-radius: 20px;
     overflow: hidden;
+    bottom: 564px;
     
 
 }
@@ -33,14 +34,14 @@ body{
 #background{
     position: relative;
     top: 0px;
-    height: 600px; 
+    height: 550px; 
     width: 1200px; 
     border: 5px solid rgb(85, 120, 117);
     border-radius: 20px;
     background: url('images/plx-5.png'), 
     url('images/plx-4.png') , url('images/plx-3.png'), 
-    url('images/plx-2.png'),
-    url('images/plx-1.png') no-repeat center center fixed; 
+    url('images/plx-2.png')
+    no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -50,7 +51,7 @@ body{
     overflow: hidden;
   
 
-    animation: animateBack 5s steps(100) infinite;
+    animation: animateBackground 5s steps(100) infinite;
     
 }
 
@@ -73,44 +74,101 @@ body{
 }
 
 .enemy{
-    width: 20px;
+    position: relative;
+    width: calc(364px / 5);
+    height: 70px;
+    top: 612px;
+    left: 1050px;
+    /* border: 2px solid black; */
+    background: url(images/Angry-mushroom400px.png);
+    transform: translate(-50%, -50%);
+    animation: move 6s infinite linear, animate 1s steps(5) infinite;
+}
+
+
+@keyframes animate {
+    0%{
+        background-position: 0;
+    }
+    100%{
+        background-position:  -346px;
+    }
+}
+
+@keyframes move{
+    0%{
+        left: 1150px;
+    }
+    100%{
+        left: -150px;
+    }
 }
 
 .jump{
     animation: jump 0.4s linear;
 }
 
-@keyframes animateBack
+@keyframes animateBackground
 {
-    from
-    {background-position: 0;}
-    to {background-position: -1200px};
+    0% {
+        background-position: 0;
+    }
+    100% {
+        background-position: -1200px
+    };
 }
 
 @keyframes jump {
     0%{
-        top: 605px;
+        top: 557px;
         
     }
 
     30%{
-        top: 560px;
+        top: 470px;
     }
 
     50%{
-        top: 540px;
+        top: 440px;
         
     }
 
     80%{
-        top: 560px;
+        top: 470px;
     }
 
     100%{
-        top:605px;
+        top:557px;
     }
 }
 
+.start{
+    position: relative;
+    left: 50px;
+    top: 470px;
+    height: 40px;
+    border: 5px solid rgb(85, 120, 117);
+    border-radius: 10px;
+    background: #2B5754;
+    color: white;
+    z-index: 3;
+
+}
+
+.reset{
+    position: relative;
+    right: 67px;
+    top: 470px;
+    z-index: 2;
+    height: 40px;
+    border: 5px solid rgb(85, 120, 117);
+    visibility: visible;
+    border-radius: 10px;
+    background: #2B5754;
+    color: white;
+    visibility: visible;
+
+} 
 
 .floor{
     position: absolute;
@@ -119,7 +177,7 @@ body{
     width: 615px;
     height: 100px;
     visibility: hidden;
-    animation: animateBack 3s steps(100) infinite;
+   
 }
 
 .floor1{
@@ -129,7 +187,7 @@ body{
     height: 100px;
     right: 102px;
     visibility: hidden;
-    animation: animateBack 3s steps(100) infinite;
+ 
 }
 
 .title{
@@ -137,16 +195,17 @@ body{
     position: relative;
     left: 70px;
     z-index: 1;
+    top:-20px
     /* visibility: hidden; */
 
 }
 
 .hang{
     position: relative;
-    height: 70px;
+    height: 80px;
     z-index: 100;
     right: 1078px;
-    top: 35px;
+    top: 40px;
 }
 
 .air{
@@ -163,12 +222,12 @@ body{
     height: 70px;
     z-index: 100;
     right: -45px;
-    bottom: 23px;
+    bottom: 25px;
 }
 
 .rules{
     position: relative;
-    top: -615px;
+    top: -545px;
     left: 1380px;
     border: 2px solid rgb(85, 120, 117);
     border-radius: 50%;
@@ -191,14 +250,14 @@ body{
     right: 0px;
     z-index: 100;
     left: 450px;
-    top: -1295px;
+    top: -1190px;
     width: 0px;
     height: 0px;
     
 }
 
 .scroll{
-    height: 650px;
+    height: 590px;
     width: 550px;
     display: none;
     position: relative;
