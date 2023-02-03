@@ -4,11 +4,39 @@ window.addEventListener('load',() => {
     const ctx = canvas.getContext('2d');
     let gameOver = false
 
+    //Start Button
+    let startButton = document.querySelector('.start')
+    startButton.addEventListener('click', startGame)
+    
+    //Reset Button
+    let resetButton = document.querySelector('.reset')
+    resetButton.addEventListener('click', function restart() {
+        window.location.reload()
+    })
+
+    let hang = document.querySelector('.hang')
+    let idle = document.querySelector('.idle')
+    let air = document.querySelector('.air')
+    let gameOverImg = document.querySelector('.game-over')
+
     let enemy = document.querySelector('.enemy')
     let player = document.querySelector('.player')
     player.style.position = "absolute";
     player.style.left = "-60px";
     player.style.top = "557px";
+
+
+    let score = 0
+    
+
+    function scoreCount() {
+        let count = setInterval(() =>{
+            score++
+            score.document.querySelector('.score').innerHtml = score
+
+        }, 5000)
+    }
+    
 
     //Collision Detection
     let collision = setInterval(function () {
@@ -19,24 +47,24 @@ window.addEventListener('load',() => {
         let enemyLeft = parseInt(window.getComputedStyle(enemy).getPropertyValue('left'))
         // console.log(playerTop)
 
-        if(enemyLeft < 5 && enemyLeft > 0 && playerTop >= 557){
-            gameOver()
+        if(enemyLeft < 4 && enemyLeft > 0 && playerTop >= 557){
+            gameOverFunct()
         }
-    })
+    }, 10)
 
     let arrowKeysPressed = false;
 
-    // function leftArrowPressed() {
+    function leftArrowPressed() {
       
-    //     player.style.left = parseInt(player.style.left) - 15 + 'px';
-    //     arrowKeysPressed = true;
-    // }
+        player.style.left = parseInt(player.style.left) - 15 + 'px';
+        arrowKeysPressed = true;
+    }
 
-    // function rightArrowPressed() {
+    function rightArrowPressed() {
      
-    //     player.style.left = parseInt(player.style.left) + 15 + 'px';
-    //     arrowKeysPressed = true;
-    // }
+        player.style.left = parseInt(player.style.left) + 15 + 'px';
+        arrowKeysPressed = true;
+    }
 
 
     function space() {
@@ -79,31 +107,67 @@ window.addEventListener('load',() => {
     //     player.style.top = parseInt(player.style.top) + 5 + 'px';
     // }
 
-    function moveSelection(e) {
-        switch (e.keyCode) {
-            // case 37:
-            // leftArrowPressed();
-            // break;
-            // case 39:
-            // rightArrowPressed();
-            // break;
-            case 32:
-            space();
-            break;
-            // case 40:
-            // downArrowPressed();
-            // break;
-        }
+    // function moveSelection(e) {
+    //     switch (e.keyCode) {
+    //         case 37:
+    //         leftArrowPressed();
+    //         break;
+    //         case 39:
+    //         rightArrowPressed();
+    //         break;
+    //         case 32:
+    //         space();
+    //         break;
+    //         case 40:
+    //         downArrowPressed();
+    //         break;
+    //     }
     
-    };
-    // document.addEventListener('keydown',function(){
-    //     jump();
-    // })
-    window.addEventListener('keydown', moveSelection);
+    // };
+    document.addEventListener('keydown',function(){
+        jump();
+    })
+    // window.addEventListener('keydown', moveSelection);
     // window.addEventListener('keyup', idle);
+
     
-    function gameOver() {
+    function startGame() {
+        startButton.style.visibility = 'hidden'
+        resetButton.style.visibility = 'hidden'
+        hang.style.visibility = 'hidden'
+        idle.style.visibility = 'hidden'
+        enemy.style.animationPlayState = 'running'
+        canvas.style.animationPlayState = 'running'
+        enemy.style.visibility = 'visible'
+        player.style.visibility = 'visible'
+        scoreCount()
+    
+        gameOver = false
+        enemy.style.left = '1050px';
+
+        console.log('Start!')
+    }
+    
+
+
+    function gameOverFunct() {
+        enemy.style.animationPlayState = 'paused'
+        // air.style.visibility = 'visible'
+        canvas.style.animation = 'paused'
+        enemy.style.visibility = 'hidden'
+        player.style.visibility = 'hidden'
+        resetButton.style.visibility = 'visible'
+        startButton.style.visibility = 'hidden'
+        gameOverImg.style.visibility = 'visible'
         
+        resetButton.style.zIndex = '5'
+        enemy.style.left = '1050px';
+       
+     
+    
+        
+        gameOver = true
+        console.log('game over')
     }
 
     /* 
@@ -211,6 +275,9 @@ https://fjolt.com/article/html-canvas-adding-images.
 
 Jungle Pack:
 https://jesse-m.itch.io/jungle-pack
+
+Pausing Animation:
+https://css-tricks.com/how-to-play-and-pause-css-animations-with-css-custom-properties/
 */
 
 

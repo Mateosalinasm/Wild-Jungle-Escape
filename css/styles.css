@@ -21,19 +21,18 @@ body{
     position: relative;
     height: 550px; 
     width: 1200px; 
-    bottom: 614px;
     left: 115px;
     border: 5px solid rgb(85, 120, 117);
     border-radius: 20px;
     overflow: hidden;
-    bottom: 564px;
+    bottom: 695px;
     
 
 }
 
 #background{
     position: relative;
-    top: 0px;
+    bottom: 130px;
     height: 550px; 
     width: 1200px; 
     border: 5px solid rgb(85, 120, 117);
@@ -49,10 +48,29 @@ body{
     filter: contrast(140%);
     margin-top: -30px;
     overflow: hidden;
-  
 
     animation: animateBackground 5s steps(100) infinite;
+    animation-play-state:paused;
+
     
+}
+
+.title{
+    top: -120px;
+    width: 1030px;
+    margin-bottom: 50px;
+    position: relative;
+    left: 82px;
+    z-index: 1;
+    filter: blur(-20px);
+
+    /* visibility: hidden; */
+
+}
+
+.score{
+    position: absolute;
+    z-index: 100;
 }
 
 .ground{
@@ -69,6 +87,7 @@ body{
     /* position: relative; */
     /* top: 540px; */
     height: 85px;
+    visibility: visible;
     
     /* right: 680px; */
 }
@@ -82,9 +101,15 @@ body{
     /* border: 2px solid black; */
     background: url(images/Angry-mushroom400px.png);
     transform: translate(-50%, -50%);
+
     animation: move 6s infinite linear, animate 1s steps(5) infinite;
+    animation-play-state: paused;
+    visibility: visible;
 }
 
+.remove-animation {
+    animation: none !important;
+  }
 
 @keyframes animate {
     0%{
@@ -144,31 +169,42 @@ body{
 
 .start{
     position: relative;
-    left: 50px;
-    top: 470px;
+    left: 366px;
+    top: 380px;
     height: 40px;
     border: 5px solid rgb(85, 120, 117);
     border-radius: 10px;
     background: #2B5754;
     color: white;
     z-index: 3;
+    visibility: visible;
+    
 
 }
 
 .reset{
     position: relative;
-    right: 67px;
+    left: 250px;
     top: 470px;
     z-index: 2;
     height: 40px;
     border: 5px solid rgb(85, 120, 117);
-    visibility: visible;
+    visibility: hidden;
     border-radius: 10px;
     background: #2B5754;
     color: white;
-    visibility: visible;
+    
 
 } 
+
+.game-over{
+    position: relative;
+    width: 600px;
+    top: 400px;
+    right: 130px;
+    z-index: 4;
+    visibility: hidden;
+}
 
 .floor{
     position: absolute;
@@ -190,44 +226,39 @@ body{
  
 }
 
-.title{
-    margin-bottom: 25px;
-    position: relative;
-    left: 70px;
-    z-index: 1;
-    top:-20px
-    /* visibility: hidden; */
 
-}
 
 .hang{
     position: relative;
     height: 80px;
     z-index: 100;
     right: 1078px;
-    top: 40px;
+    top: -89px;
+    visibility: visible;
 }
 
 .air{
     position: relative;
-    height: 44px;
+    height: 75px;
     z-index: 100;
-    right: 570px;
-    bottom: 113px;
+    right: 454px;
+    top: 75px;
     visibility: hidden;
+
 }
 
 .idle{
     position: relative;
     height: 70px;
     z-index: 100;
-    right: -45px;
-    bottom: 25px;
+    right: -20px;
+    bottom: 157px;
+    visibility: visible;
 }
 
 .rules{
     position: relative;
-    top: -545px;
+    top: -685px;
     left: 1380px;
     border: 2px solid rgb(85, 120, 117);
     border-radius: 50%;
@@ -250,7 +281,7 @@ body{
     right: 0px;
     z-index: 100;
     left: 450px;
-    top: -1190px;
+    top: -1317px;
     width: 0px;
     height: 0px;
     
