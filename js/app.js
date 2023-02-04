@@ -2,8 +2,10 @@ window.addEventListener('load',() => {
 
     const canvas = document.querySelector('#background');
     const ctx = canvas.getContext('2d');
+    
     let gameOver = false
 
+    
 
     //Start Button
     let startButton = document.querySelector('.start')
@@ -20,9 +22,10 @@ window.addEventListener('load',() => {
         
     })
 
+    //Aesthic elements
     let title = document.querySelector(".title")
     title.classList.add('animate__zoomInDown')
-
+    
     let hang = document.querySelector('.hang')
     let idle = document.querySelector('.idle')
     let air = document.querySelector('.air')
@@ -30,6 +33,10 @@ window.addEventListener('load',() => {
     let jumpSound = document.getElementById('jump-sound')
     let gameOverSound = document.getElementById('game-over-sound')
     let song = document.getElementById('song')
+    
+   
+
+    //Mute Button
     let soundIcon = document.querySelector('.sound-icon')
     soundIcon.addEventListener('click', () =>{
         soundIcon.style.visibility = 'hidden'
@@ -66,6 +73,7 @@ window.addEventListener('load',() => {
         }, 1000)
       
     }
+
     
 
     //Collision Detection
@@ -82,20 +90,35 @@ window.addEventListener('load',() => {
         console.log(enemyLeft)
 
 
-        let playerHeight = player.offsetHeight;
-        let playerBottom = playerTop + playerHeight;
+        // let playerHeight = player.offsetHeight;
+        // let playerBottom = playerTop + playerHeight;
 
-        if (enemyTop <= playerBottom && enemyTop >= playerTop) {
-            // console.log('hasdfhas')
-        }
+        // if (enemyTop <= playerBottom && enemyTop >= playerTop) {
+        //     // console.log('hasdfhas')
+        // }
         // if(enemyTop > 612 && playerBottom == 480){
         //     console.log('yehaa')
         // }
 
-        if(enemyLeft < 4 && enemyLeft > 0 && playerTop >= 557){
+        if(enemyLeft < 3 && enemyLeft > 0 && playerTop >= 557){
+            
             gameOverFunct()
         }
+
     }, 10)
+
+    function difficulty(){
+        let speed = 6;
+        let speedInterval = setInterval(() => {
+          enemy.style.animation = `move ${speed}s infinite linear`;
+          console.log(`speed: ${speed}`);
+          speed -= 0.2;
+          if (speed < 2) {
+            clearInterval(speedInterval);
+          }
+        }, 7000);
+    }
+    difficulty()
 
     let arrowKeysPressed = false;
 
@@ -188,8 +211,9 @@ window.addEventListener('load',() => {
         player.style.visibility = 'visible'
         scoreText.style.visibility = 'visible'
         scoreNumber.style.visibility = 'visible'
-        song.play().volume
-        // song.volume = 0.5
+        song.play()
+        
+
         
         scoreCount()
     
@@ -201,7 +225,7 @@ window.addEventListener('load',() => {
     
 
     function gameOverFunct() {
-        gameOverSound.play()
+       
         enemy.style.animationPlayState = 'paused'
         // air.style.visibility = 'visible'
         canvas.style.animation = 'paused'
