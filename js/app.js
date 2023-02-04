@@ -25,16 +25,20 @@ window.addEventListener('load',() => {
     player.style.left = "-60px";
     player.style.top = "557px";
 
-
+    let scoreText = document.getElementById('score')
+    let scoreNumber = document.querySelector('#number')
     let score = 0
     
-
-    function scoreCount() {
+    function scoreCount(){
         let count = setInterval(() =>{
             score++
-            score.document.querySelector('.score').innerHtml = score
+            document.querySelector('#number').innerHTML = score
 
-        }, 5000)
+            if(gameOver === true){
+            clearInterval(count)
+            }
+        }, 1000)
+      
     }
     
 
@@ -42,10 +46,25 @@ window.addEventListener('load',() => {
     let collision = setInterval(function () {
         
         let playerTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'))
+        let playerB = parseInt(window.getComputedStyle(player).getPropertyValue('bottom'))
     
 
         let enemyLeft = parseInt(window.getComputedStyle(enemy).getPropertyValue('left'))
-        // console.log(playerTop)
+        console.log(playerTop)
+
+        let enemyTop = parseInt(window.getComputedStyle(enemy).getPropertyValue('top'))
+        console.log(enemyLeft)
+
+
+        let playerHeight = player.offsetHeight;
+        let playerBottom = playerTop + playerHeight;
+
+        if (enemyTop <= playerBottom && enemyTop >= playerTop) {
+            // console.log('hasdfhas')
+        }
+        // if(enemyTop > 612 && playerBottom == 480){
+        //     console.log('yehaa')
+        // }
 
         if(enemyLeft < 4 && enemyLeft > 0 && playerTop >= 557){
             gameOverFunct()
@@ -107,27 +126,27 @@ window.addEventListener('load',() => {
     //     player.style.top = parseInt(player.style.top) + 5 + 'px';
     // }
 
-    // function moveSelection(e) {
-    //     switch (e.keyCode) {
-    //         case 37:
-    //         leftArrowPressed();
-    //         break;
-    //         case 39:
-    //         rightArrowPressed();
-    //         break;
-    //         case 32:
-    //         space();
-    //         break;
-    //         case 40:
-    //         downArrowPressed();
-    //         break;
-    //     }
+    function moveSelection(e) {
+        switch (e.keyCode) {
+            case 37:
+            leftArrowPressed();
+            break;
+            case 39:
+            rightArrowPressed();
+            break;
+            case 32:
+            space();
+            break;
+            case 40:
+            downArrowPressed();
+            break;
+        }
     
-    // };
-    document.addEventListener('keydown',function(){
-        jump();
-    })
-    // window.addEventListener('keydown', moveSelection);
+    };
+    // document.addEventListener('keydown',function(){
+    //     jump();
+    // })
+    window.addEventListener('keydown', moveSelection);
     // window.addEventListener('keyup', idle);
 
     
@@ -140,6 +159,9 @@ window.addEventListener('load',() => {
         canvas.style.animationPlayState = 'running'
         enemy.style.visibility = 'visible'
         player.style.visibility = 'visible'
+        scoreText.style.visibility = 'visible'
+        scoreNumber.style.visibility = 'visible'
+        
         scoreCount()
     
         gameOver = false
@@ -159,6 +181,9 @@ window.addEventListener('load',() => {
         resetButton.style.visibility = 'visible'
         startButton.style.visibility = 'hidden'
         gameOverImg.style.visibility = 'visible'
+        scoreNumber.style.visibility = 'hidden'
+        scoreText.style.visibility = 'hidden'
+        
         
         resetButton.style.zIndex = '5'
         enemy.style.left = '1050px';

@@ -25,14 +25,14 @@ body{
     border: 5px solid rgb(85, 120, 117);
     border-radius: 20px;
     overflow: hidden;
-    bottom: 695px;
+    bottom: 760px;
     
 
 }
 
 #background{
     position: relative;
-    bottom: 130px;
+    bottom: 195px;
     height: 550px; 
     width: 1200px; 
     border: 5px solid rgb(85, 120, 117);
@@ -56,7 +56,7 @@ body{
 }
 
 .title{
-    top: -120px;
+    top: -180px;
     width: 1030px;
     margin-bottom: 50px;
     position: relative;
@@ -68,9 +68,25 @@ body{
 
 }
 
-.score{
-    position: absolute;
-    z-index: 100;
+#number{
+    position: relative;
+    left: 260px;
+    width: 20px;
+    top: 72px;
+    z-index: 5;
+    visibility: hidden;
+    font-family: 'Press Start 2P', cursive;
+    color: #af761b;
+  
+
+}
+
+#score{
+    position: relative;
+    right: 950px;
+    top: 155px;
+    z-index: 5;
+    visibility: hidden;
 }
 
 .ground{
@@ -169,7 +185,7 @@ body{
 
 .start{
     position: relative;
-    left: 366px;
+    left: 472px;
     top: 380px;
     height: 40px;
     border: 5px solid rgb(85, 120, 117);
@@ -184,7 +200,7 @@ body{
 
 .reset{
     position: relative;
-    left: 250px;
+    left: 355px;
     top: 470px;
     z-index: 2;
     height: 40px;
@@ -201,7 +217,7 @@ body{
     position: relative;
     width: 600px;
     top: 400px;
-    right: 130px;
+    right: 30px;
     z-index: 4;
     visibility: hidden;
 }
@@ -233,7 +249,7 @@ body{
     height: 80px;
     z-index: 100;
     right: 1078px;
-    top: -89px;
+    top: -159px;
     visibility: visible;
 }
 
@@ -251,14 +267,14 @@ body{
     position: relative;
     height: 70px;
     z-index: 100;
-    right: -20px;
-    bottom: 157px;
+    right: -15px;
+    bottom: 222px;
     visibility: visible;
 }
 
 .rules{
     position: relative;
-    top: -685px;
+    top: -747px;
     left: 1380px;
     border: 2px solid rgb(85, 120, 117);
     border-radius: 50%;
@@ -281,7 +297,7 @@ body{
     right: 0px;
     z-index: 100;
     left: 450px;
-    top: -1317px;
+    top: -1382px;
     width: 0px;
     height: 0px;
     
