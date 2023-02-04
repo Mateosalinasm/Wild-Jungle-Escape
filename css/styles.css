@@ -311,3 +311,11 @@ body{
     /* visibility: hidden; */
 
 }
+
+.animate__zoomInDown{
+    --animate-duration: 1.5s;
+}
+
+.animate__wobble{
+    --animate-duration: 1.75s;
+}

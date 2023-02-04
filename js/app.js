@@ -4,20 +4,32 @@ window.addEventListener('load',() => {
     const ctx = canvas.getContext('2d');
     let gameOver = false
 
+
     //Start Button
     let startButton = document.querySelector('.start')
     startButton.addEventListener('click', startGame)
     
     //Reset Button
     let resetButton = document.querySelector('.reset')
+    let restartSound = document.getElementById('restart-sound')
     resetButton.addEventListener('click', function restart() {
-        window.location.reload()
+        restartSound.play()
+        setTimeout(() => {
+            window.location.reload()
+        }, 1000)
+        
     })
+
+    let title = document.querySelector(".title")
+    title.classList.add('animate__zoomInDown')
 
     let hang = document.querySelector('.hang')
     let idle = document.querySelector('.idle')
     let air = document.querySelector('.air')
     let gameOverImg = document.querySelector('.game-over')
+    let jumpSound = document.getElementById('jump-sound')
+    let gameOverSound = document.getElementById('game-over-sound')
+    
 
     let enemy = document.querySelector('.enemy')
     let player = document.querySelector('.player')
@@ -89,6 +101,7 @@ window.addEventListener('load',() => {
     function space() {
        
         player.classList.add('jump')
+        jumpSound.play()
         setTimeout(() => {
             player.classList.remove('jump');
         }, 400);
@@ -173,6 +186,7 @@ window.addEventListener('load',() => {
 
 
     function gameOverFunct() {
+        gameOverSound.play()
         enemy.style.animationPlayState = 'paused'
         // air.style.visibility = 'visible'
         canvas.style.animation = 'paused'
@@ -181,6 +195,7 @@ window.addEventListener('load',() => {
         resetButton.style.visibility = 'visible'
         startButton.style.visibility = 'hidden'
         gameOverImg.style.visibility = 'visible'
+        gameOverImg.classList.add('animate__wobble')
         scoreNumber.style.visibility = 'hidden'
         scoreText.style.visibility = 'hidden'
         
@@ -222,7 +237,7 @@ window.addEventListener('load',() => {
                     this.dx = -this.dx
                 }
 
-                if(this.y + this.radius > canvas.height  || this.y - this.radius < -10){
+                if(this.y + this.radius > canvas.height || this.y - this.radius < -10){
                     this.dy = -this.dy
                 }
 
@@ -262,6 +277,7 @@ window.addEventListener('load',() => {
 
     const rules = document.querySelector('.rules');
     const scroll = document.querySelector('.scroll');
+    const scrollSound = document.getElementById('paper-sound')
 
     rules.addEventListener('click', () => {
         
@@ -270,12 +286,14 @@ window.addEventListener('load',() => {
         scroll.style.display = 'none';
         scroll.classList.remove('animate__fadeInBottomRight');
         scroll.classList.add('animate__fadeOutBottomRight');
+       
         } 
         //I can't get the second animation to fade out.
         else{
         scroll.style.display = 'block';
         scroll.classList.remove('animate__fadeOutBottomRight');
         scroll.classList.add('animate__fadeInBottomRight');
+        scrollSound.play()
         }
     });
     
