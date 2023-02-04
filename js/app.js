@@ -29,6 +29,20 @@ window.addEventListener('load',() => {
     let gameOverImg = document.querySelector('.game-over')
     let jumpSound = document.getElementById('jump-sound')
     let gameOverSound = document.getElementById('game-over-sound')
+    let song = document.getElementById('song')
+    let soundIcon = document.querySelector('.sound-icon')
+    soundIcon.addEventListener('click', () =>{
+        soundIcon.style.visibility = 'hidden'
+        mute.style.visibility = 'visible'
+        song.pause()
+    })
+    let mute = document.querySelector('.mute')
+    mute.addEventListener('click', () => {
+        mute.style.visibility = 'hidden'
+        soundIcon.style.visibility = 'visible'
+        song.play()
+    })
+  
     
 
     let enemy = document.querySelector('.enemy')
@@ -174,6 +188,8 @@ window.addEventListener('load',() => {
         player.style.visibility = 'visible'
         scoreText.style.visibility = 'visible'
         scoreNumber.style.visibility = 'visible'
+        song.play().volume
+        // song.volume = 0.5
         
         scoreCount()
     
@@ -183,7 +199,6 @@ window.addEventListener('load',() => {
         console.log('Start!')
     }
     
-
 
     function gameOverFunct() {
         gameOverSound.play()
@@ -198,6 +213,7 @@ window.addEventListener('load',() => {
         gameOverImg.classList.add('animate__wobble')
         scoreNumber.style.visibility = 'hidden'
         scoreText.style.visibility = 'hidden'
+        song.pause()
         
         
         resetButton.style.zIndex = '5'

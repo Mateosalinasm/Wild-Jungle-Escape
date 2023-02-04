@@ -319,3 +319,29 @@ body{
 .animate__wobble{
     --animate-duration: 1.75s;
 }
+
+.music{
+    position: absolute;
+    /* border: 2px solid black; */
+    height: 200px;
+    width: 30px;
+    z-index: 6;
+    top: 750px;
+    
+}
+
+.sound-icon{
+    position: relative;
+    height: 25px;
+    top: 33px;
+    left: 6px;
+    visibility: visible;
+
+}
+
+.mute{
+    position: relative;
+    height: 33px;
+    left: 6px;
+    visibility: hidden;
+}
