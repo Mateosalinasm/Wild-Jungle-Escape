@@ -248,18 +248,21 @@ body{
     position: relative;
     height: 80px;
     z-index: 100;
-    right: 1078px;
-    top: -159px;
+    right: 1072px;
+    top: -155px;
     visibility: visible;
 }
 
-.air{
+.monkey{
     position: relative;
     height: 75px;
     z-index: 100;
-    right: 454px;
-    top: 75px;
-    visibility: hidden;
+    right: 853px;
+    top: 30px;
+    filter: opacity(45%);
+    /* border: 1px solid black; */
+    rotate: 20deg;
+    visibility: visible;
 
 }
 
@@ -267,7 +270,7 @@ body{
     position: relative;
     height: 70px;
     z-index: 100;
-    right: -15px;
+    right: 5px;
     bottom: 222px;
     visibility: visible;
 }

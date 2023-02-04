@@ -28,7 +28,7 @@ window.addEventListener('load',() => {
     
     let hang = document.querySelector('.hang')
     let idle = document.querySelector('.idle')
-    let air = document.querySelector('.air')
+    let monkey = document.querySelector('.monkey')
     let gameOverImg = document.querySelector('.game-over')
     let jumpSound = document.getElementById('jump-sound')
     let gameOverSound = document.getElementById('game-over-sound')
@@ -118,7 +118,7 @@ window.addEventListener('load',() => {
           }
         }, 7000);
     }
-    difficulty()
+    
 
     let arrowKeysPressed = false;
 
@@ -201,12 +201,14 @@ window.addEventListener('load',() => {
 
     
     function startGame() {
+        difficulty()
         startButton.style.visibility = 'hidden'
         resetButton.style.visibility = 'hidden'
         hang.style.visibility = 'hidden'
         idle.style.visibility = 'hidden'
         enemy.style.animationPlayState = 'running'
         canvas.style.animationPlayState = 'running'
+        monkey.style.visibility = 'hidden'
         enemy.style.visibility = 'visible'
         player.style.visibility = 'visible'
         scoreText.style.visibility = 'visible'
@@ -226,19 +228,28 @@ window.addEventListener('load',() => {
 
     function gameOverFunct() {
        
+        enemy.style.animation = 'paused'
         enemy.style.animationPlayState = 'paused'
         // air.style.visibility = 'visible'
         canvas.style.animation = 'paused'
         enemy.style.visibility = 'hidden'
         player.style.visibility = 'hidden'
         resetButton.style.visibility = 'visible'
+        monkey.src = 'css/images/—Pngtree—monkey black silhouette_6630412.png'
+        monkey.style.visibility = 'visible'
+        monkey.style.right = '-55px'
+        monkey.style.top = '-200px'
+        monkey.style.rotate = '-3deg'
+        monkey.style.height = '90px'
+        monkey.style.filter = 'opacity(80%)'
         startButton.style.visibility = 'hidden'
         gameOverImg.style.visibility = 'visible'
         gameOverImg.classList.add('animate__wobble')
         scoreNumber.style.visibility = 'hidden'
         scoreText.style.visibility = 'hidden'
         song.pause()
-        
+        gameOverSound.play()
+        clearInterval(collision)
         
         resetButton.style.zIndex = '5'
         enemy.style.left = '1050px';
