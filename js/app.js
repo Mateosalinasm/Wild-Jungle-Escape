@@ -33,6 +33,9 @@ window.addEventListener('load',() => {
     let jumpSound = document.getElementById('jump-sound')
     let gameOverSound = document.getElementById('game-over-sound')
     let song = document.getElementById('song')
+    let win = document.querySelector('.win')
+    let winnerSong = document.getElementById('winner')
+    
     
    
 
@@ -100,7 +103,7 @@ window.addEventListener('load',() => {
         //     console.log('yehaa')
         // }
 
-        if(enemyLeft < 3 && enemyLeft > 0 && playerTop >= 557){
+        if(enemyLeft < 4 && enemyLeft > 0 && playerTop >= 557){
             
             gameOverFunct()
         }
@@ -199,9 +202,10 @@ window.addEventListener('load',() => {
     window.addEventListener('keydown', moveSelection);
     // window.addEventListener('keyup', idle);
 
-    
+  
+
     function startGame() {
-        difficulty()
+        // difficulty()
         startButton.style.visibility = 'hidden'
         resetButton.style.visibility = 'hidden'
         hang.style.visibility = 'hidden'
@@ -215,6 +219,44 @@ window.addEventListener('load',() => {
         scoreNumber.style.visibility = 'visible'
         song.play()
         
+        function winGame() {
+            let winner = setTimeout(() =>{
+                if(gameOver){
+                    clearTimeout(winner)
+                    return;
+                    }
+      
+                enemy.style.animation = 'paused'
+                enemy.style.animationPlayState = 'paused'
+                // air.style.visibility = 'visible'
+                canvas.style.animation = 'paused'
+                enemy.style.visibility = 'hidden'
+                player.style.visibility = 'hidden'
+                resetButton.style.visibility = 'visible'
+                monkey.src = 'css/images/—Pngtree—monkey black silhouette_6630412.png'
+                monkey.style.visibility = 'visible'
+                monkey.style.right = '-55px'
+                monkey.style.top = '-350px'
+                monkey.style.rotate = '-3deg'
+                monkey.style.height = '90px'
+                monkey.style.filter = 'opacity(80%)'
+                monkey.classList.add()
+                startButton.style.visibility = 'visible'
+                scoreNumber.style.visibility = 'hidden'
+                scoreText.style.visibility = 'hidden'
+                win.style.visibility = 'visible'
+                gameOverImg.style.visibility = 'hidden'
+                startButton.style.visibility = 'hidden'
+                resetButton.src = 'css/images/inkpx-word-art (9).png'
+                
+                win.classList.add('animate__tada')
+                monkey.classList.add('animate__bounce')
+                song.pause()
+                winnerSong.play()
+        
+            }, 60000) 
+        }
+        winGame()
 
         
         scoreCount()
@@ -223,8 +265,10 @@ window.addEventListener('load',() => {
         enemy.style.left = '1050px';
 
         console.log('Start!')
+       
     }
     
+   
 
     function gameOverFunct() {
        
@@ -238,7 +282,7 @@ window.addEventListener('load',() => {
         monkey.src = 'css/images/—Pngtree—monkey black silhouette_6630412.png'
         monkey.style.visibility = 'visible'
         monkey.style.right = '-55px'
-        monkey.style.top = '-200px'
+        monkey.style.top = '-350px'
         monkey.style.rotate = '-3deg'
         monkey.style.height = '90px'
         monkey.style.filter = 'opacity(80%)'
@@ -250,6 +294,8 @@ window.addEventListener('load',() => {
         song.pause()
         gameOverSound.play()
         clearInterval(collision)
+        win.style.visibility = 'hidden'
+        
         
         resetButton.style.zIndex = '5'
         enemy.style.left = '1050px';
@@ -260,6 +306,11 @@ window.addEventListener('load',() => {
         gameOver = true
         console.log('game over')
     }
+
+
+ 
+
+   
 
     /* 
     While teaching myself how to use canvas I learned how to animate circles and thought it would be a really fun
