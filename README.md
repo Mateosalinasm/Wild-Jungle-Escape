@@ -1,4 +1,4 @@
-# Project-1-GA
+# Wild Jungle Escape
 
 The purpose for this project was to create a Mario-style game, where the player starts on the far left side of the screen. The player needs to jump over obstacles and avoid enemies while moving toward the right side of the screen. The player only gets one chance, if he is touched by an enemy he dies and the game prompts a reset. If player survives for a pre-determined amount of time they win the game and get a trophy. I had to change the dynamic of the game and make it into a scroll game instead. The character now remains in place while the background moves behind him. The way you win the game is by lasting as long as possible without hitting any of the obstacles or creatures always trying to beat your previous high-score.
 
